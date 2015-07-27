@@ -1,0 +1,32 @@
+{
+  "name": "playground-graphql",
+  "version": "1.0.0",
+  "description": "playground-graphql",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r babel/register .",
+    "test": "standard && NODE_ENV=test node test",
+    "test-cov": "standard && NODE_ENV=test istanbul cover test.js"
+  },
+  "repository": "yoshuawuyts/playground-graphql",
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^5.8.9",
+    "body": "^5.1.0",
+    "graphql": "^0.1.8",
+    "methodist": "^1.0.3",
+    "send-data": "^7.0.0",
+    "wayfarer": "^4.1.2"
+  },
+  "devDependencies": {
+    "istanbul": "^0.3.17",
+    "standard": "^4.5.4",
+    "tape": "^4.0.1"
+  },
+  "files": [
+    "LICENSE",
+    "index.js",
+    "README.md"
+  ]
+}
