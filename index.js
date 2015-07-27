@@ -1,8 +1,12 @@
+const graphql = require('graphql').graphql
 const methodist = require('methodist')
 const wayfarer = require('wayfarer')
-const send = require('send-data')
+const send = require('send-data/json')
+const body = require('body')
 const http = require('http')
 const url = require('url')
+
+const schema = require('./schema')
 
 const port = 1337
 
@@ -25,10 +29,19 @@ server.listen(port, function () {
 function graphQlHandler (req, res) {
   return methodist(req.method, {
     post () {
-      send(req, res, { body: 'hello world' })
+      body(req, res, (err, resp) => {
+        if (err) throw err
+        graphql(schema, resp)
+          .then(body => {
+            send(req, res, body)
+          })
+      })
     },
     get () {
-      send(req, res, { body: 'hello world' })
+      graphql(schema, req.body)
+        .then(body => {
+          send(req, res, body)
+        })
     }
   })
 }
