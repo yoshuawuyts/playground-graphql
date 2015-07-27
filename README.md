@@ -1,5 +1,4 @@
 # playground-graphql
-[![js-standard-style][standard-image]][standard-url]
 
 GraphQL experimentation.
 
