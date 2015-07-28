@@ -1,7 +1,7 @@
 #!/bin/sh
 
 curl \
-  -X POST \
+  -X PUT \
   -H "Content-Type:application/graphql" \
   -d 'mutation RootMutationType { updateCount }' \
   'localhost:1337/graphql'

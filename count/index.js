@@ -10,22 +10,17 @@ module.exports = graphQLHandler
 // handle graphQl path
 // (req, res) => fn
 function graphQLHandler (req, res) {
-  return methodist(req.method, {
-    post () {
-      body(req, res, (err, resp) => {
-        if (err) throw err
-        graphql(schema, resp)
-          .then(body => {
-            send(req, res, body)
-          })
-      })
-    },
-    get () {
-      graphql(schema, req.body)
+  return methodist(req.method, { put: put })
+
+  // handle GraphQL query
+  // null -> null
+  function put () {
+    body(req, res, (err, resp) => {
+      if (err) throw err
+      graphql(schema, resp)
         .then(body => {
           send(req, res, body)
         })
-    }
-  })
+    })
+  }
 }
-
