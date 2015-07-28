@@ -13,5 +13,15 @@ module.exports = new GraphQLSchema({
         resolve: () => count
       }
     }
+  }),
+  mutation: new GraphQLObjectType({
+    name: 'RootMutationType',
+    fields: {
+      updateCount: {
+        type: GraphQLInt,
+        description: 'updates the count',
+        resolve: () => count += 1
+      }
+    }
   })
 })
